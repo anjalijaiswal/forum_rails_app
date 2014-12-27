@@ -1,0 +1,4 @@
+forum_rails_app
+===============
+
+to implement a Forum.  Each forum should have topic in multiple topics. Each topic should have multiple comments. Each topics can also be tagged.  Additional features of the Forum:  • Permalinks should be associated with each forum topic (a permanent URL which will display a topic and its comments). • All URLs must be RESTful and the URL for the topic should contain the title of the topic i.e http://&lt;domain-name>/&lt;forum>/1-Hello-World. • All comments should be added to a post by AJAX requests i.e. there should be no page refresh posting a comment to the server • Tag names, associated both with topic and comments, should be visible in a list on each page. Each tag should be clickable and lead  the user to the corresponding post or comment on click. • The Forum administrator should have a separate login through which he can edit topics, delete unwanted comments and do general housekeeping.
