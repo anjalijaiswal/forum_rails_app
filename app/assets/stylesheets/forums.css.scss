@@ -1,0 +1,79 @@
+// Place all the styles related to the Forums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.forums {
+  table {
+    border-collapse: collapse;
+  }
+
+  table tr th {
+  	background:#222;
+  	color:#fff;
+  	padding:0;
+  	border:#111
+  	solid 1px;
+  }
+
+  table tr td {
+  	border:1px #ccc solid; 
+    padding: 5px;
+    vertical-align: top;
+  }
+  
+  table tr td h4{
+  	margin:0;
+  	padding:0;
+  	font-weight:normal;
+  }
+
+  .list_image {
+    width:  60px;
+    height: 70px;
+  }
+
+  .forum_tittle{
+    background:#000026;
+    
+  }
+
+  .topic_tittle{
+    background:#b2b2bd;
+    color:#000000;
+  }
+  
+  .topic_tittle a{
+    color:#000000;
+  }
+
+  .list_description {
+    width: 60%;
+
+    dl {
+      margin: 0;
+    }
+
+    dt {
+      color:        #244;
+      font-weight:  bold;
+      font-size:    larger;
+    }
+
+    dd {
+      margin: 0;
+    }
+  }
+
+  .list_actions {
+    font-size:    x-small;
+    text-align:   right;
+    padding-left: 1em;
+  }
+
+  .list_line_even {
+    background:   #E6E6FA;
+  }
+
+  .list_line_odd {
+    background:   #FFE4E1;
+  }
+}

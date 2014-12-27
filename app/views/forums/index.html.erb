@@ -1,0 +1,82 @@
+
+<% if user_signed_in? && current_user.admin == true %>
+  <h2>Listing forums</h2>
+  <table class="table">
+    <thead>
+      <th width="40%">Forum</th>
+      <th width="25%">Last Post</th>
+      <th width="17%">Posts</th>
+      <th width="20%">Links</th>
+    </thead> 
+    <% for forum in @forums %>
+    <tbody >
+      <tr class="forum_tittle">
+        <td ><h4><%= link_to h(forum.name), forum_path(forum.id) %></h4>
+          <small><%=h forum.description %></small></td>
+          <td><h4><%= link_to "Create New Topic", new_forum_topic_path(:forum_id=> forum.id) %><h4></td>
+          <td></td>
+          <td class="list_actions"><%= link_to "Show", forum %>
+           <%= link_to "Edit", edit_forum_path(forum) %>
+           <%= link_to "Destroy", forum, :confirm => 'Are you sure?', :method => :delete %>
+         </td>
+       </tr>
+       <% @topics=forum.topics %>
+       <% for topic in @topics %>
+       <tbody class="topic_tittle">
+        <tr>
+          <td><%= link_to "#{topic.name}", forum_topic_path(:id=>topic.id,:forum_id=> forum.id) %></td>
+          <% @post=topic.posts.order("created_at").last %>
+          <% if @post==nil%>
+          <td><%= "No Post Yet" %></td>
+          <% else %>
+          <td><%= @post.created_at %></td>
+          <% end %>
+          <td><%= topic.posts.count %></td>
+          <td class="list_actions"><%= link_to "Show", forum %>
+            <%= link_to "Edit", edit_forum_path(forum) %>
+            <%= link_to "Destroy", forum, :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </tbody>
+      <% end %>
+    </table>
+    <p><h3><%= link_to "New Forum", new_forum_path %></h3></p>
+<% else %>
+  <h2>Listing forums</h2>
+  <table class="table">
+    <thead>
+      <th width="60%">Forum</th>
+      <th width="25%">Last Post</th>
+      <th width="17%">Posts</th>
+    </thead> 
+    <% for forum in @forums %>
+    <tbody >
+      <tr class="forum_tittle">
+        <td ><h4><%= link_to h(forum.name), forum_path(forum.id) %></h4>
+          <small><%=h forum.description %></small>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <% @topics=forum.topics %>
+      <% for topic in @topics %>
+      <tbody class="topic_tittle">
+        <tr>
+          <td><%= link_to "#{topic.name}", forum_topic_path(:id=>topic.id,:forum_id=> forum.id) %></td>
+          <% @post=topic.posts.order("created_at").last %>
+          <% if @post==nil%>
+          <td><%= "No Post Yet" %></td>
+          <% else %>
+          <td><%= @post.created_at %></td>
+          <% end %>
+          <td><%= topic.posts.count %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </tbody>
+    <% end %>
+
+
+  </table>
+  <% end %>

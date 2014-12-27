@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h2><%= @topic.name %></h2>
+<p>Tags: <%= raw @topic.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+<table class="table">
+	<thead>
+		<th width="60%">Post</th>
+		<th width="25%">Last Comment</th>
+		<th width="17%">Comments</th>
+	</thead> 	
+	<% @posts=@topic.posts %>
+	<% for post in @posts %>
+	<tbody class="post_tittle">
+		<tr>
+			<td><%= link_to "#{post.title}", post %></td>
+			<% @comment=post.comments.order("created_at").last %>
+			<% if @comment==nil%>
+				<td><%= "No Comment Yet" %></td>
+			<% else %>
+				<td><%= @comment.created_at %></td>
+			<% end %>
+			<td><%= post.comments.count %></td>
+		</tr>
+	</tbody>
+	<% end %>
+	<tr><%= link_to 'New Post', new_post_path(:topic_id=>@topic.id)%><tr>
+</table>
+
